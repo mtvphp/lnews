@@ -16,9 +16,7 @@ class Nlist extends Seeder
     {
         News::insert([
             'title' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellendus.',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-            Amet exercitationem facilis incidunt repellat repellendus sed. Ab aliquid blanditiis, 
-             cupiditate, dignissimos distinctio doloribus enim ipsum molestiae obcaecati officiis quae vitae?',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet exercitationem facilis incidunt repellat repellendus sed. Ab aliquid blanditiis, cupiditate, dignissimos distinctio doloribus enim ipsum molestiae obcaecati officiis quae vitae?',
             'author' => 1,
             'category_id' => 1,
             'created_at' => Carbon::now(),

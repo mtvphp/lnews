@@ -11,7 +11,7 @@ class ManagerController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('id', 'DESC')->paginate(10);
+        $categories = Category::orderBy('order')->paginate(10);
 
         $news = News::orderBy('id', 'DESC')->paginate(3, '*', 'list');
 

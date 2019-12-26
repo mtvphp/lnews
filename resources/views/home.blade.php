@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
+@section('title')
+    Homepage
+@endsection
+
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
@@ -21,13 +31,13 @@
                         by {{ get_user_name($news_list->author) }}
                     </div>
                 </div>
-
-                <div>
-                    {{ $news->links() }}
-                </div>
             @empty
                 Here will be news
             @endforelse
+
+            <div>
+                {{ $news->links() }}
+            </div>
 
         </div>
 
@@ -41,7 +51,9 @@
                 <div class="card-body">
                     <ul class="list-group">
                         @forelse($categories as $category)
-                            <li class="list-group-item">{{ $category->title }}</li>
+                            <li class="list-group-item">
+                                <a href="{{ route('category', $category->id) }}">{{ $category->title }}</a>
+                            </li>
                         @empty
                             Here will be categories
                         @endforelse

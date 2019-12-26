@@ -9,6 +9,13 @@
     <div class="col-sm-6 offset-sm-3">
         @include('manager.components.flash')
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('manager') }}">Manager</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add news</li>
+            </ol>
+        </nav>
+
         <form method="post" action="{{ route('manager.news.store') }}">
 
             @csrf

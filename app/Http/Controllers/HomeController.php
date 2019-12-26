@@ -11,8 +11,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $news = News::orderBy('id', 'DESC')->paginate(4, '*', 'foo');
-        $categories = Category::all();
+        $news = News::orderBy('id', 'DESC')->paginate(3, '*', 'foo');
+        $categories = Category::orderBy('order')->get();
 
         return view('home', [
             'news' => $news,

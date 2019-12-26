@@ -20,5 +20,6 @@ Route::namespace('Manager')->prefix('manager')->middleware('auth', 'admin')->gro
 
 
 Route::get('/news/{news}', 'Manager\NewsController@show')->name('news');
+Route::get('/category/{category}', 'Manager\CategoryController@show')->name('category');
 
 

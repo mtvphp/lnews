@@ -9,6 +9,12 @@
         @include('manager.components.flash')
     </div>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Manager</li>
+        </ol>
+    </nav>
+
     <div class="row">
 
         <div class="col-sm-4">

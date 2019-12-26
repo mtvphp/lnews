@@ -16,6 +16,14 @@ class Categories extends Seeder
     {
         Category::insert([
             'title' => 'First Category',
+            'order' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        Category::insert([
+            'title' => 'Secondary Category',
+            'order' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

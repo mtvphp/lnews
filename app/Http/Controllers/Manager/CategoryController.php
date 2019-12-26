@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Category;
+use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,13 +38,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'title' => 'required|min:4|unique:categories'
+            'title' => 'required|min:4|unique:categories',
+            'order' => 'required|numeric'
         ];
 
         $this->validate($request, $rules);
 
         Category::create([
-            'title' => $request->title
+            'title' => $request->title,
+            'order' => $request->order
         ]);
 
         return redirect()->route('manager')->with('success', 'Category successfully created');
@@ -57,7 +60,17 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        if($category) {
+            $news = News::orderBy('id',  'DESC')->where('category_id', '=',  $category->id)->paginate(3, '*', 'foo');
+
+            return view('manager.category.show', [
+                'category' => $category,
+                'news' => $news,
+                'categories' => Category::orderBy('order')->get()
+            ]);
+        }
+
+        return back();
     }
 
     /**
@@ -89,11 +102,13 @@ class CategoryController extends Controller
             $old = $category->title;
 
             $this->validate($request, [
-                'title' => 'required|min:4'
+                'title' => 'required|min:4',
+                'order' => 'required|numeric'
             ]);
 
             $category->update([
-                'title' => $request->title
+                'title' => $request->title,
+                'order' => $request->order
             ]);
 
             return redirect()->route('manager')->with('success', 'Category ' . $old . ' edited to ' . $category->title);
