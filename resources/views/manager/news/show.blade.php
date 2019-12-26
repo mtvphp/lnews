@@ -42,7 +42,9 @@
                 <div class="card-body">
                     <ul class="list-group">
                         @forelse($categories as $category)
-                            <li class="list-group-item">{{ $category->title }}</li>
+                            <li class="list-group-item">
+                                <a href="{{ route('category', $category) }}">{{ $category->title }}</a>
+                            </li>
                         @empty
                             Here will be categories
                         @endforelse

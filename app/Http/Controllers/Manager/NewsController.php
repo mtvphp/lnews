@@ -69,7 +69,7 @@ class NewsController extends Controller
     public function show(News $news)
     {
         if($news) {
-            $categories = Category::all();
+            $categories = Category::orderBy('order')->get();
 
             return view('manager.news.show', [
                 'news' => $news,
